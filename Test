@@ -75,7 +75,7 @@ function AntScreen() {
 
         <DataTable.Row>
           <DataTable.Cell>Ice cream sandwich</DataTable.Cell>
-          <DataTable.Cell numeric>237</DataTable.Cell>
+          <DataTable.Cell numeric>27</DataTable.Cell>
           <DataTable.Cell numeric>8.0</DataTable.Cell>
         </DataTable.Row>
 
