@@ -1,0 +1,290 @@
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Platform, TouchableHighlight, Button ,TouchableOpacity,Animated,Image} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { List, DataTable } from 'react-native-paper'
+import { PinchGestureHandler } from 'react-native-gesture-handler';
+import { block, timing } from 'react-native-reanimated';
+
+
+
+
+function HomeScreen({navigation})
+{
+  const MoveToMain = () =>
+  {
+    navigation.navigate("Main");
+  }
+return(
+  <View style = {styles.safeAreaContainer}>
+    <Button onPress = {MoveToMain} title = "TAP TO START"/>
+  </View>
+);
+}
+function MainScreen()
+{
+  const pressSetting = () =>
+  {
+    alert("환경설정");
+  }
+return(
+  <View style = {styles.container}>
+    <View style = {styles.setting}>
+      <Button onPress = {pressSetting} title = "환경설정"/>
+    </View>
+    <Tab.Navigator>
+      <Tab.Screen name= "도시" component={CityScreen} />
+      <Tab.Screen name= "개미" component={AntScreen} />
+      <Tab.Screen name= "건물" component={BuildingScreen} />
+      <Tab.Screen name= "지도" component={MapScreen} />
+    </Tab.Navigator>  
+  </View>
+);
+}
+
+function CityScreen() {
+
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handlePress = () => setExpanded(!expanded);
+
+  const pressCity = () =>
+  {
+    alert("아파트");
+  }
+
+
+  return (
+
+<View style = {{flex: 1, justifyContent: 'flex-end'}}>
+    <List.Accordion>
+      <DataTable style = {{backgroundColor: 'white'}}>
+      <DataTable.Row>
+      <DataTable.Cell>시장</DataTable.Cell>
+      <DataTable.Cell>진우</DataTable.Cell>
+
+    </DataTable.Row>
+      <DataTable.Row>
+      <DataTable.Cell>도시 등급</DataTable.Cell>
+      <DataTable.Cell>소도시</DataTable.Cell>
+
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>보유자원</DataTable.Cell>
+      <DataTable.Cell>73502</DataTable.Cell>
+
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>인구수</DataTable.Cell>
+      <DataTable.Cell>3502</DataTable.Cell>
+
+    </DataTable.Row>
+
+      </DataTable>
+    </List.Accordion>
+  </View>
+
+  );
+}
+
+/*
+const scale = React.useRef(new Animated.Value(1)).current;
+const handlePinch = Animated.event([{nativeEvent : {scale}}]);
+
+<PinchGestureHandler  onGestureEvent = {handlePinch}>
+<Animated.Image
+source = {{uri :'https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2F20120301_130%2Fchojay0912_1330581631442VgMYi_JPEG%2F%25B0%25B3%25B1%25B8%25B8%25AE_%25B8%25B6%25B8%25AE%25BF%25C0.jpg&type=sc960_832'
+ ,width:100,height:100}}
+style={[styles.zoomedImg, {transform: [{scale}]}]}
+/>
+
+</PinchGestureHandler>
+*/
+// setSideLength(event.nativeEvent.translationY);
+
+
+
+
+
+
+
+
+
+function AntScreen() {
+  return (
+    <View style = {{flex: 1, justifyContent: 'flex-end'}}>
+    <List.Accordion>
+    <DataTable style = {{backgroundColor: 'white'}}>
+      <DataTable.Row>
+
+      <DataTable.Cell>일꾼개미</DataTable.Cell>
+      <DataTable.Cell numeric>20자원</DataTable.Cell>
+
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>이미지</DataTable.Cell>
+      <DataTable.Cell>감독관개미</DataTable.Cell>
+      <DataTable.Cell numeric>40자원</DataTable.Cell>
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>이미지</DataTable.Cell>
+      <DataTable.Cell>회사원개미</DataTable.Cell>
+      <DataTable.Cell numeric>80자원</DataTable.Cell>
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>이미지</DataTable.Cell>
+      <DataTable.Cell>회장개미</DataTable.Cell>
+      <DataTable.Cell numeric>200자원</DataTable.Cell>
+    </DataTable.Row>
+
+      </DataTable>
+    </List.Accordion>
+  </View>
+);
+}
+
+function BuildingScreen() {
+return (
+<View style = {{flex: 1, justifyContent: 'flex-end'}}>
+    <List.Accordion>
+      <DataTable style = {{backgroundColor: 'green'}}>
+        <Button title = 'store' />
+      </DataTable>
+    </List.Accordion>
+  </View>
+);
+}
+
+function MapScreen() {
+
+  const pressCity = () =>
+  {
+    
+    alert("아파트");
+  }
+
+return (
+  <View style = {{flex: 1, justifyContent: 'flex-end'}}>
+        <Image source = {require('./assets/ad.png')} />
+
+
+
+  <List.Accordion>
+  <DataTable style = {{backgroundColor: 'white'}}>
+    <DataTable.Row>
+  
+    <DataTable.Cell>
+
+
+
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressCity}>
+       <Text style = {styles.text2 } > ss </Text>
+      </TouchableHighlight>
+      
+  
+    </DataTable.Cell>
+    <DataTable.Cell>감독관개미</DataTable.Cell>
+    <DataTable.Cell numeric>20자원</DataTable.Cell>
+  </DataTable.Row>
+
+  <DataTable.Row>
+    <DataTable.Cell>
+    <TouchableHighlight style = {styles.touchable }
+      onPress = {pressCity}>
+       <Text style = {styles.text2 } > ss </Text>
+      </TouchableHighlight>
+
+    </DataTable.Cell>
+    <DataTable.Cell>감독관개미</DataTable.Cell>
+    <DataTable.Cell numeric>40자원</DataTable.Cell>
+  </DataTable.Row>
+
+  <DataTable.Row>
+    <DataTable.Cell>
+    <TouchableHighlight style = {styles.touchable }
+      onPress = {pressCity}>
+       <Text style = {styles.text2 } > ss </Text>
+      </TouchableHighlight>
+
+    </DataTable.Cell>
+    <DataTable.Cell>회사원개미</DataTable.Cell>
+    <DataTable.Cell numeric>80자원</DataTable.Cell>
+  </DataTable.Row>
+
+  <DataTable.Row>
+    <DataTable.Cell>
+    <TouchableHighlight style = {styles.touchable }
+      onPress = {pressCity}>
+       <Text style = {styles.text2 } > ss </Text>
+      </TouchableHighlight>
+
+    </DataTable.Cell>
+    <DataTable.Cell>회장개미</DataTable.Cell>
+    <DataTable.Cell numeric>200자원</DataTable.Cell>
+  </DataTable.Row>
+
+    </DataTable>
+  </List.Accordion>
+</View>
+  );
+}
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+export default function App() {
+  return (
+    <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name = "Home" component = {HomeScreen}></Stack.Screen>
+          <Stack.Screen name = "Main" component = {MainScreen}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+
+  safeAreaContainer : 
+  { flex: 1,
+    backgroundColor: 'white',
+    paddingTop: Platform.OS == 'android' ? 24 : 0,
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },  
+  text1: 
+  {
+    width: 100,
+    height: 100,
+    fontSize: 24,
+    backgroundColor: 'orange',
+  }, 
+  touchable: 
+  {
+    flex: 1,
+  }, 
+  setting: 
+  {
+    alignItems: 'flex-end'
+  }, 
+  city: 
+  {
+    flexDirection:'row',
+    alignItems: 'flex-start'
+  },text2: 
+  {
+    width: 50,
+    height: 50,
+    fontSize: 24,
+    backgroundColor: 'orange',
+  }, 
+
+});
