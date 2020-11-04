@@ -1,0 +1,438 @@
+import { StatusBar } from 'expo-status-bar';
+import React ,{useState} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Platform, TouchableHighlight, Button ,TouchableOpacity,Animated,Image, ImageBackground} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { List, DataTable } from 'react-native-paper'
+import {PanGestureHandler} from 'react-native-gesture-handler';
+
+
+
+
+function HomeScreen({navigation})
+{
+  const MoveToMain = () =>
+  {
+    navigation.navigate("Main");
+  }
+return(
+  <View style = {styles.safeAreaContainer}>
+    <Button onPress = {MoveToMain} title = "TAP TO START"/>
+  </View>
+);
+}
+function MainScreen()
+{
+  const pressSetting = () =>
+  {
+    alert("환경설정");
+  }
+  const [sideLength, setSideLength] = useState(100);
+return(
+  <View style = {styles.container}>
+    <View style = {styles.setting}>
+    <Button onPress = {pressSetting} title = "환경설정"/>
+    </View>
+    <View style={styles.wrap}>
+      <PanGestureHandler
+        onGestureEvent={(event) => {
+          setSideLength(event.nativeEvent.translationY);
+        }}>
+        <View
+          style={{
+            ...styles.square,
+            width: sideLength,
+            height: sideLength,
+          }}></View>
+      </PanGestureHandler>
+    </View>
+
+    <Tab.Navigator>
+      <Tab.Screen name= "도시" component={CityScreen} />
+      <Tab.Screen name= "개미" component={AntScreen} />
+      <Tab.Screen name= "건물" component={BuildingScreen} />
+      <Tab.Screen name= "지도" component={MapScreen} />
+    </Tab.Navigator>
+  </View> 
+);
+}
+
+function CityScreen() {
+
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handlePress = () => setExpanded(!expanded);
+
+  const pressCity = () =>
+  {
+    alert("아파트");
+  }
+
+
+  return (
+
+<View style = {{flex: 1, justifyContent: 'flex-end'}}>
+    <List.Accordion>
+      <DataTable style = {{backgroundColor: 'white'}}>
+      <DataTable.Row>
+      <DataTable.Cell>시장</DataTable.Cell>
+      <DataTable.Cell>진우</DataTable.Cell>
+
+    </DataTable.Row>
+      <DataTable.Row>
+      <DataTable.Cell>도시 등급</DataTable.Cell>
+      <DataTable.Cell>소도시</DataTable.Cell>
+
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>보유자원</DataTable.Cell>
+      <DataTable.Cell>73502</DataTable.Cell>
+
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>인구수</DataTable.Cell>
+      <DataTable.Cell>3502</DataTable.Cell>
+
+    </DataTable.Row>
+
+      </DataTable>
+    </List.Accordion>
+  </View>
+
+  );
+}
+
+
+
+
+
+
+function AntScreen() {
+
+  const pressWorkingAni = () =>
+  {
+    
+    alert("일꾼개미");
+  }
+  
+  const pressInspectorAni = () =>
+  {
+    
+    alert("감독관개미");
+  }
+
+  const pressEmployeeAni = () =>
+  { 
+    alert("회사원개미");
+  }
+
+  const pressPresidentAni = () =>
+  {
+    
+    alert("회장개미");
+  }
+const pressBuyButton =() => 
+{     
+  alert("구매");
+}
+  return (
+    <View style = {{flex: 1, justifyContent: 'flex-end'}}>
+    <List.Accordion>
+    <DataTable style = {{backgroundColor: 'white'}}>
+
+    <DataTable.Row>
+      <DataTable.Cell>     
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressInspectorAni}>
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+      <DataTable.Cell>일꾼개미</DataTable.Cell>
+      <DataTable.Cell numeric>40자원</DataTable.Cell>
+      <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressBuyButton}>
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+
+    </DataTable.Row>
+
+
+
+    <DataTable.Row>
+      <DataTable.Cell>     
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressInspectorAni}>
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+      <DataTable.Cell>감독관개미</DataTable.Cell>
+      <DataTable.Cell numeric>40자원</DataTable.Cell>
+      <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+    onPress = {pressBuyButton}>
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>       
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressEmployeeAni}>
+
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+      <DataTable.Cell>회사원개미</DataTable.Cell>
+      <DataTable.Cell numeric>80자원</DataTable.Cell>
+      <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressBuyButton}>
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>      
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressPresidentAni}>
+
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+      <DataTable.Cell>회장개미</DataTable.Cell>
+      <DataTable.Cell numeric>200자원</DataTable.Cell>
+      <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressBuyButton}>
+       <Image source = {require('./assets/ad.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+    </DataTable.Row>
+
+      </DataTable>
+    </List.Accordion>
+  </View>
+);
+}
+
+function BuildingScreen() {
+
+  const pressBrickHouse = () =>
+  {
+    alert("벽돌집");
+  }
+  
+  const pressAntApt = () =>
+  { 
+    alert("아파트");
+  }
+
+  const pressAntCompany = () =>
+  {
+    alert("개미 회사");
+  }
+
+  const pressAntHotel = () =>
+  {   
+    alert("개미 호텔");
+  }
+  const pressBuyButton =() => 
+  {     
+    alert("구매");
+  }
+
+return (
+  <View style = {{flex: 1, justifyContent: 'flex-end'}}>
+  <List.Accordion>
+  <DataTable style = {{backgroundColor: 'white'}}>
+    <DataTable.Row>
+
+    <DataTable.Cell>
+    <TouchableHighlight style = {styles.touchable }
+    onPress = {pressBrickHouse}>
+     <Image source = {require('./assets/sd.png')} />
+    </TouchableHighlight>
+    </DataTable.Cell>
+    <DataTable.Cell>벽돌집</DataTable.Cell>
+    <DataTable.Cell numeric>20자원</DataTable.Cell>
+    <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressBuyButton}>
+       <Image source = {require('./assets/sd.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+  </DataTable.Row>
+
+  <DataTable.Row>
+    <DataTable.Cell>     
+    <TouchableHighlight style = {styles.touchable }
+    onPress = {pressAntApt}>
+
+     <Image source = {require('./assets/sd.png')} />
+    </TouchableHighlight>
+    </DataTable.Cell>
+    <DataTable.Cell>아파트</DataTable.Cell>
+    <DataTable.Cell numeric>40자원</DataTable.Cell>
+    <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressBuyButton}>
+       <Image source = {require('./assets/sd.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+  </DataTable.Row>
+
+  <DataTable.Row>
+    <DataTable.Cell>       
+    <TouchableHighlight style = {styles.touchable }
+    onPress = {pressAntCompany}>
+
+     <Image source = {require('./assets/sd.png')} />
+    </TouchableHighlight>
+    </DataTable.Cell>
+    <DataTable.Cell>개미 회사</DataTable.Cell>
+    <DataTable.Cell numeric>80자원</DataTable.Cell>
+    <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressBuyButton}>
+       <Image source = {require('./assets/sd.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+  </DataTable.Row>
+
+  <DataTable.Row>
+    <DataTable.Cell>      
+    <TouchableHighlight style = {styles.touchable }
+    onPress = {pressAntHotel}>
+
+     <Image source = {require('./assets/sd.png')} />
+    </TouchableHighlight>
+    </DataTable.Cell>
+    <DataTable.Cell>개미 호텔</DataTable.Cell>
+    <DataTable.Cell numeric>200자원</DataTable.Cell>
+    <DataTable.Cell></DataTable.Cell>
+      <DataTable.Cell>
+      <TouchableHighlight style = {styles.touchable }
+      onPress = {pressBuyButton}>
+       <Image source = {require('./assets/sd.png')} />
+      </TouchableHighlight>
+      </DataTable.Cell>
+  </DataTable.Row>
+
+    </DataTable>
+  </List.Accordion>
+</View>
+);
+}
+
+function MapScreen() {
+
+  const pressStore = () =>
+  {
+    alert("상점");
+  }
+  const pressAchievements= () =>
+  {
+    alert("업적");
+  }
+  const pressCollectibles = () =>
+  {
+    alert("수집품");
+  }
+  const pressExpansion = () =>
+  {
+    alert("확장");
+  }
+
+
+
+return (
+  <View style = {{flex: 1, justifyContent: 'flex-end'}}>
+  <List.Accordion>
+  <DataTable style = {{backgroundColor: 'red'}}>
+
+  <Button onPress = {pressStore} title = 'store'/>
+  <Button onPress = {pressAchievements} title = '업적'/>
+  <Button onPress = {pressCollectibles} title = '수집품'/>
+  <Button onPress = {pressExpansion} title = '확장'/>
+  </DataTable>
+</List.Accordion>
+</View>);
+}
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+export default function App() {
+  return (
+
+    <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name = "Home" component = {HomeScreen}></Stack.Screen>
+          <Stack.Screen name = "Main" component = {MainScreen}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+
+  safeAreaContainer : 
+  { flex: 1,
+    backgroundColor: 'white',
+    paddingTop: Platform.OS == 'android' ? 24 : 0,
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },  
+  text1: 
+  {
+    width: 100,
+    height: 100,
+    fontSize: 24,
+    backgroundColor: 'orange',
+  }, 
+  touchable: 
+  {
+    flex: 1,
+  }, 
+  setting: 
+  {
+    alignItems: 'flex-end'
+  }, 
+  city: 
+  {
+    flexDirection:'row',
+    alignItems: 'flex-start'
+  },text2: 
+  {
+    width: 50,
+    height: 50,
+    fontSize: 24,
+    backgroundColor: 'orange',
+  }, 
+  backgroundImage : 
+  {
+    flex : 1,
+    justifyContent : "center"
+  },
+  wrap: {flex: 1, justifyContent: 'center'},
+  
+  square: {
+    backgroundColor: 'blue',
+    alignSelf: 'center',
+  },
+});
