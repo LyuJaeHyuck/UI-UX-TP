@@ -261,7 +261,7 @@ return (
     <DataTable.Cell>
     <TouchableHighlight style = {styles.touchable }
     onPress = {pressBrickHouse}>
-     <Image source = {require('./assets/sd.png')} />
+     <Image source = {require('./assets/아파트.png')} />
     </TouchableHighlight>
     </DataTable.Cell>
     <DataTable.Cell>벽돌집</DataTable.Cell>
@@ -270,7 +270,7 @@ return (
       <DataTable.Cell>
       <TouchableHighlight style = {styles.touchable }
       onPress = {pressBuyButton}>
-       <Image source = {require('./assets/sd.png')} />
+       <Image source = {require('./assets/아파트.png')} />
       </TouchableHighlight>
       </DataTable.Cell>
   </DataTable.Row>
@@ -280,7 +280,7 @@ return (
     <TouchableHighlight style = {styles.touchable }
     onPress = {pressAntApt}>
 
-     <Image source = {require('./assets/sd.png')} />
+     <Image source = {require('./assets/아파트.png')} />
     </TouchableHighlight>
     </DataTable.Cell>
     <DataTable.Cell>아파트</DataTable.Cell>
@@ -289,7 +289,7 @@ return (
       <DataTable.Cell>
       <TouchableHighlight style = {styles.touchable }
       onPress = {pressBuyButton}>
-       <Image source = {require('./assets/sd.png')} />
+       <Image source = {require('./assets/아파트.png')} />
       </TouchableHighlight>
       </DataTable.Cell>
   </DataTable.Row>
@@ -299,7 +299,7 @@ return (
     <TouchableHighlight style = {styles.touchable }
     onPress = {pressAntCompany}>
 
-     <Image source = {require('./assets/sd.png')} />
+     <Image source = {require('./assets/아파트.png')} />
     </TouchableHighlight>
     </DataTable.Cell>
     <DataTable.Cell>개미 회사</DataTable.Cell>
@@ -308,7 +308,7 @@ return (
       <DataTable.Cell>
       <TouchableHighlight style = {styles.touchable }
       onPress = {pressBuyButton}>
-       <Image source = {require('./assets/sd.png')} />
+       <Image source = {require('./assets/아파트.png')} />
       </TouchableHighlight>
       </DataTable.Cell>
   </DataTable.Row>
@@ -318,7 +318,7 @@ return (
     <TouchableHighlight style = {styles.touchable }
     onPress = {pressAntHotel}>
 
-     <Image source = {require('./assets/sd.png')} />
+     <Image source = {require('./assets/아파트.png')} />
     </TouchableHighlight>
     </DataTable.Cell>
     <DataTable.Cell>개미 호텔</DataTable.Cell>
@@ -327,7 +327,7 @@ return (
       <DataTable.Cell>
       <TouchableHighlight style = {styles.touchable }
       onPress = {pressBuyButton}>
-       <Image source = {require('./assets/sd.png')} />
+       <Image source = {require('./assets/아파트.png')} />
       </TouchableHighlight>
       </DataTable.Cell>
   </DataTable.Row>
