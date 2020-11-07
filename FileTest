@@ -1,0 +1,24 @@
+import { StatusBar } from 'expo-status-bar';
+// import React from 'react';
+import React, {useState, useRef} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Platform, TouchableHighlight, Image, Button} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { List, DataTable, Checkbox, Dialog, Portal, Paragraph, Modal, Provider } from 'react-native-paper'
+import {PanGestureHandler} from 'react-native-gesture-handler';
+
+function HomeScreen({navigation})
+{
+  const MoveToMain = () =>
+  {
+    navigation.navigate("Main");
+  }
+
+return(
+  <View style = {styles.safeAreaContainer}>
+    
+    <Button onPress = {MoveToMain} title = "TAP TO START"/>
+  </View>
+);
+}
