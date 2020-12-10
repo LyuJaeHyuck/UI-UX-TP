@@ -1,0 +1,13 @@
+import React from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Platform, TouchableHighlight, Image, ImageBackground} from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Main from './src/screens/MainScreen';
+
+export default class extends React.Component {
+
+  render() {
+    return <Main/>
+  }
+
+}
